@@ -206,7 +206,7 @@ body {
     object-fit: cover;
 }
 
-/* Полоска на лайв-иконках, включается классом .shine */
+/* Полоска на лайв-иконках */
 
 .live-item::before {
     content: "";
@@ -419,7 +419,7 @@ body {
 .btn-red    { background: #ef4444; }
 .btn-blue   { background: #3b82f6; }
 
-/* BC в кнопках кейсов (оставляем как есть) */
+/* BC в кнопках */
 
 .bc-circle {
     width: 13px;
@@ -440,7 +440,7 @@ body {
     font-weight: 800;
 }
 
-/* НИЖНЕЕ МЕНЮ — иконки как на скрине, крупнее */
+/* НИЖНЕЕ МЕНЮ — ещё чуть больше, и плотнее к краям */
 
 .bottom-nav {
     position: fixed;
@@ -450,30 +450,32 @@ body {
     background: #000000;
     border-top: 1px solid #222;
     display: flex;
-    justify-content: space-around;
-    padding: 8px 18px 10px 18px; /* больше высота, ближе к краю снизу */
+    justify-content: space-between;
+    padding: 9px 14px 11px 14px;  /* меньше боковых отступов, ближе к краю */
     z-index: 100;
 }
 
 .nav-item {
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    font-size: 10px;            /* крупнее подпись */
+    font-size: 11px;             /* ещё на шаг крупнее подписи */
     font-weight: 600;
     color: #9ca3af;
+    text-align: center;
 }
 
 .nav-item img {
-    width: 26px;                /* крупные иконки, ближе к референсу */
-    height: 26px;
+    width: 28px;                 /* иконки ещё чуть больше */
+    height: 28px;
     object-fit: contain;
     filter: brightness(0) invert(1);
     opacity: 0.7;
 }
 
-/* Активный пункт (Домой) */
+/* Активный пункт (Домой) — такой же размер, только подсветка */
 
 .nav-active span {
     color: #ffffff;
@@ -481,5 +483,5 @@ body {
 
 .nav-active img {
     opacity: 1;
-    filter: brightness(1.2) invert(1) drop-shadow(0 0 4px rgba(139,92,246,0.9));
+    filter: brightness(1.25) invert(1) drop-shadow(0 0 4px rgba(139,92,246,0.9));
 }

@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const items = liveTrack.querySelectorAll('.live-item');
             items.forEach(item => {
                 item.classList.remove('shine');
-                void item.offsetWidth;  // сброс анимации
+                void item.offsetWidth;
                 item.classList.add('shine');
             });
 
@@ -74,7 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 isAnimating = false;
 
-                // новая иконка -> запускаем полосу по всем
                 runShineOnAll();
             }, 460);
         };
@@ -83,5 +82,5 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(shiftLiveOnce, 4500);
     }
 
-    // сюда дальше добавим обработчики на открытие кейсов и работу с бэкендом
+    // дальше — логика кейсов/бэкенда, когда будем подключать
 });
