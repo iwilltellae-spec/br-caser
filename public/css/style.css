@@ -1,11 +1,7 @@
 :root {
     --bg-app: #09090b;
-    --bg-card: #141416;
-    --accent-red: #ea1919;
-    --accent-gold: #fbbf24;
     --text-white: #ffffff;
     --text-gray: #9ca3af;
-    --nav-bg: #000000;
 }
 
 * {
@@ -24,6 +20,7 @@ body {
     background-color: var(--bg-app);
     color: var(--text-white);
     font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
 }
 
 /* HEADER */
@@ -43,13 +40,13 @@ body {
 .header-left {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .avatar-wrap {
     position: relative;
-    width: 42px;
-    height: 42px;
+    width: 40px;
+    height: 40px;
 }
 
 .avatar {
@@ -64,7 +61,7 @@ body {
     position: absolute;
     bottom: -2px;
     right: -2px;
-    font-size: 10px;
+    font-size: 9px;
     background: #222;
     border-radius: 50%;
     padding: 2px;
@@ -73,27 +70,29 @@ body {
 .user-data {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 }
 
 .user-data .label {
-    font-size: 10px;
+    font-size: 9px;
     color: var(--text-gray);
+    margin-bottom: 2px;
 }
+
+/* BC в балансе */
 
 .balance-row {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     font-weight: 800;
-    font-size: 14px; /* чуть меньше цифры */
+    font-size: 14px;
+    line-height: 1;
 }
-
-/* BC‑монета в балансе (меньше, ровный синий, без белого блика) */
 
 .coin-img {
     width: 16px;
     height: 16px;
+    min-width: 16px;
     border-radius: 50%;
     background: #2563eb;
     display: flex;
@@ -102,13 +101,12 @@ body {
 }
 
 .coin-img span {
-    font-size: 9px;
+    font-size: 7px;
     font-weight: 900;
     color: #ffffff;
-    letter-spacing: 0.5px;
-    text-shadow:
-        0 0 1px rgba(0,0,0,0.9),
-        0 0 2px rgba(0,0,0,0.9);  /* чёрный контур вокруг BC */
+    line-height: 1;
+    margin-top: -1px; /* лёгкий подъём, чтобы было визуально по центру */
+    text-shadow: 0 0 2px #000;
 }
 
 .btn-deposit {
@@ -118,16 +116,15 @@ body {
     background: linear-gradient(90deg, #7c3aed, #a78bfa);
     border: none;
     color: white;
-    padding: 10px 16px;
-    border-radius: 12px;
+    padding: 8px 14px;
+    border-radius: 10px;
     font-weight: 700;
-    font-size: 13px;
-    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.4);
+    font-size: 12px;
 }
 
 .btn-deposit-icon {
-    width: 18px;
-    height: 18px;
+    width: 16px;
+    height: 16px;
     object-fit: contain;
 }
 
@@ -142,8 +139,8 @@ body {
 .live-section {
     display: flex;
     align-items: center;
-    padding: 15px 0 15px 15px;
-    gap: 10px;
+    padding: 15px 0 15px 3px;
+    gap: 8px;
 }
 
 .live-tag {
@@ -163,8 +160,8 @@ body {
 }
 
 .live-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     border-radius: 50%;
     background: #22c55e;
     box-shadow: 0 0 6px rgba(34, 197, 94, 0.9);
@@ -177,15 +174,12 @@ body {
     100% { transform: scale(1);   opacity: 1;   }
 }
 
-/* обёртка (не двигается) */
 .live-scroll {
     flex: 1;
-    min-width: 0;
     overflow: hidden;
-    padding-right: 15px;
+    padding-right: 8px;
 }
 
-/* трек (двигается) */
 .live-track {
     display: flex;
     gap: 8px;
@@ -194,41 +188,38 @@ body {
 
 .live-item {
     position: relative;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 10px;
     background: #1f1f22;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+    flex-shrink: 0;
 }
 
 .live-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: inherit;
 }
 
-/* Блик по лайв‑иконкам: включается классом .shine */
+/* Полоска на лайв-иконках — включается .shine */
 
 .live-item::before {
     content: "";
     position: absolute;
     top: -80%;
-    left: -180%;
-    width: 70%;                 /* заметная полоса */
+    left: -200%;
+    width: 120%;
     height: 260%;
     background: linear-gradient(
         120deg,
         rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.55) 50%,
+        rgba(255,255,255,0.6) 50%,
         rgba(255,255,255,0) 100%
     );
     transform: translateX(0) rotate(18deg);
     pointer-events: none;
-    filter: blur(5px);
+    filter: blur(6px);
     opacity: 0;
 }
 
@@ -237,22 +228,22 @@ body {
 }
 
 @keyframes shine-live {
-    0%   { transform: translateX(-120%) rotate(18deg); opacity: 0; }
-    20%  { opacity: 1; }
-    100% { transform: translateX(220%)  rotate(18deg); opacity: 0; }
+    0%   { transform: translateX(-140%) rotate(18deg); opacity: 0; }
+    15%  { opacity: 1; }
+    100% { transform: translateX(220%) rotate(18deg); opacity: 0; }
 }
 
-/* БАННЕРЫ – ЧИСТЫЕ ИЗОБРАЖЕНИЯ */
+/* БАННЕРЫ */
 
 .promo-grid {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .banner-img {
-    border-radius: 18px;
+    border-radius: 16px;
     overflow: hidden;
     background: #111;
 }
@@ -269,10 +260,6 @@ body {
     gap: 8px;
 }
 
-.banner-img.small {
-    border-radius: 16px;
-}
-
 /* КЕЙСЫ */
 
 .cases-area {
@@ -285,7 +272,7 @@ body {
 
 .case-card {
     background: #121212;
-    border-radius: 20px;
+    border-radius: 18px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -295,27 +282,12 @@ body {
 
 /* Цветные рамки */
 
-.border-yellow {
-    border-color: #facc15;
-    box-shadow: 0 0 12px rgba(250, 204, 21, 0.25);
-}
+.border-yellow { border-color: #facc15; }
+.border-green  { border-color: #22c55e; }
+.border-red    { border-color: #ef4444; }
+.border-blue   { border-color: #3b82f6; }
 
-.border-green {
-    border-color: #22c55e;
-    box-shadow: 0 0 12px rgba(34, 197, 94, 0.25);
-}
-
-.border-red {
-    border-color: #ef4444;
-    box-shadow: 0 0 12px rgba(239, 68, 68, 0.25);
-}
-
-.border-blue {
-    border-color: #3b82f6;
-    box-shadow: 0 0 12px rgba(59, 130, 246, 0.25);
-}
-
-/* Блик на второй карточке */
+/* Блик на втором кейсе — полоса через всю карточку */
 
 .shine-card {
     position: relative;
@@ -325,31 +297,31 @@ body {
 .shine-card::before {
     content: "";
     position: absolute;
-    top: -70%;
-    left: -170%;
-    width: 45%;
-    height: 230%;
+    top: -80%;
+    left: -220%;
+    width: 130%;
+    height: 260%;
     background: linear-gradient(
         120deg,
         rgba(255,255,255,0) 0%,
-        rgba(255,255,255,0.25) 50%,
+        rgba(255,255,255,0.35) 50%,
         rgba(255,255,255,0) 100%
     );
     transform: translateX(0) rotate(18deg);
     pointer-events: none;
-    filter: blur(8px);
+    filter: blur(10px);
     opacity: 0;
-    animation: shine-card-move 8.5s infinite ease-in-out;
+    animation: shine-card-move 8s infinite ease-in-out;
 }
 
 @keyframes shine-card-move {
-    0%   { transform: translateX(0)    rotate(18deg); opacity: 0; }
-    18%  { transform: translateX(160%) rotate(18deg); opacity: 1; }
-    32%  { transform: translateX(320%) rotate(18deg); opacity: 0; }
-    100% { transform: translateX(320%) rotate(18deg); opacity: 0; }
+    0%   { transform: translateX(-120%) rotate(18deg); opacity: 0; }
+    15%  { transform: translateX(40%)   rotate(18deg); opacity: 1; }
+    30%  { transform: translateX(220%)  rotate(18deg); opacity: 0; }
+    100% { transform: translateX(220%)  rotate(18deg); opacity: 0; }
 }
 
-/* фото кейса */
+/* Фото кейса */
 
 .case-img {
     width: 100%;
@@ -361,10 +333,9 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-/* низ карточки */
+/* Низ карточки */
 
 .case-footer {
     background: #020617;
@@ -380,30 +351,38 @@ body {
 
 .case-footer-text {
     display: flex;
-    flex-direction: column;
+    align-items: center;
+    min-height: 14px;
 }
 
 .case-title {
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
+    line-height: 1;
 }
 
 /* Кнопки */
 
 .btn-case {
     border: none;
-    border-radius: 999px;
-    padding: 7px 18px;
-    font-size: 12px;
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
     font-weight: 800;
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 6px;
-    cursor: pointer;
+    gap: 5px;
     color: #ffffff;
+    cursor: pointer;
 }
 
-/* FREE‑кнопки с бликом */
+.btn-icon {
+    width: 14px;
+    height: 14px;
+    object-fit: contain;
+}
+
+/* FREE‑кнопки */
 
 .btn-free {
     position: relative;
@@ -436,68 +415,28 @@ body {
     100% { transform: translateX(300%) rotate(20deg); opacity: 0; }
 }
 
-/* лёгкий пульс иконок на FREE‑кнопках */
+/* Цвет кнопок */
 
-.btn-free .btn-icon {
-    animation: icon-pulse 2.4s infinite ease-in-out;
-}
+.btn-yellow { background: #facc15; }
+.btn-green  { background: #22c55e; }
+.btn-red    { background: #ef4444; }
+.btn-blue   { background: #3b82f6; }
 
-@keyframes icon-pulse {
-    0%   { transform: scale(1);    opacity: 0.9; }
-    50%  { transform: scale(1.08); opacity: 1;   }
-    100% { transform: scale(1);    opacity: 0.9; }
-}
-
-/* маленькая иконка в кнопке */
-
-.btn-icon {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-}
-
-/* Цвета кнопок */
-
-.btn-yellow {
-    background: #facc15;
-    color: #ffffff;
-    box-shadow: 0 3px 8px rgba(250, 204, 21, 0.4);
-}
-
-.btn-green {
-    background: #22c55e;
-    color: #ffffff;
-    box-shadow: 0 3px 8px rgba(34, 197, 94, 0.4);
-}
-
-.btn-red {
-    background: #ef4444;
-    color: #ffffff;
-    box-shadow: 0 3px 8px rgba(239, 68, 68, 0.4);
-}
-
-.btn-blue {
-    background: #3b82f6;
-    color: #ffffff;
-    box-shadow: 0 3px 8px rgba(59, 130, 246, 0.4);
-}
-
-/* BC‑кружок в кнопках цены: тот же стиль, что в балансе */
+/* BC в кнопках кейсов — как раньше, не менял, только немного подогнал под баланс */
 
 .bc-circle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 16px;
-    height: 16px;
+    width: 13px;
+    height: 13px;
     border-radius: 50%;
     background: #2563eb;
-    font-size: 9px;
-    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 7px;
+    font-weight: 900;
+    line-height: 1;
     color: #ffffff;
-    text-shadow:
-        0 0 1px rgba(0,0,0,0.9),
-        0 0 2px rgba(0,0,0,0.9);
+    text-shadow: 0 0 2px #000;
 }
 
 .price-num {
@@ -511,12 +450,11 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: rgba(0,0,0,0.96);
-    backdrop-filter: blur(10px);
+    background: #000000;
     border-top: 1px solid #222;
     display: flex;
-    justify-content: space-between;
-    padding: 10px 15px 22px 15px;
+    justify-content: space-around;
+    padding: 6px 12px 8px 12px;
     z-index: 100;
 }
 
@@ -524,47 +462,43 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    width: 20%;
-    font-size: 10px;
+    gap: 3px;
+    font-size: 9px;
     font-weight: 600;
     color: #9ca3af;
 }
 
 .nav-item img {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
     filter: brightness(0) invert(1);
     opacity: 0.65;
 }
 
-/* Центральный домик */
+/* Центральная иконка дома — чуть больше, но не огромная */
 
 .active-home {
     position: relative;
-    top: -14px;
 }
 
 .home-bg {
     background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-    width: 50px;
-    height: 50px;
-    border-radius: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 5px 15px rgba(109, 40, 217, 0.4);
-    border: 4px solid var(--bg-app);
+    border: 2px solid #000000;
 }
 
-.active-home img {
-    width: 28px;
-    height: 28px;
+.home-bg img {
+    width: 18px;
+    height: 18px;
     opacity: 1;
 }
 
 .active-home span {
     color: #ffffff;
-    margin-top: 4px;
 }

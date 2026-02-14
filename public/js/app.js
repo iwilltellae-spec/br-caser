@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Telegram user:', user);
     }
 
-    // ----- LIVE: сдвиг, рандомные иконки и блик по всем при обновлении -----
+    // ----- LIVE: сдвиг, рандомные иконки и полоса по всем при обновлении -----
 
     const liveTrack = document.querySelector('.live-track');
 
@@ -36,14 +36,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const items = liveTrack.querySelectorAll('.live-item');
             items.forEach(item => {
                 item.classList.remove('shine');
-                void item.offsetWidth;       // сброс анимации
-                item.classList.add('shine'); // включаем блик
+                void item.offsetWidth;  // сброс анимации
+                item.classList.add('shine');
             });
 
-            // через ~1.3 сек убираем класс, чтобы не залипал
+            // убираем класс чуть позже, чтобы можно было перезапускать
             setTimeout(() => {
                 items.forEach(item => item.classList.remove('shine'));
-            }, 1300);
+            }, 1400);
         };
 
         const shiftLiveOnce = () => {
@@ -75,16 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 isAnimating = false;
 
-                // новая иконка "упала" -> запускаем блик по всем
+                // новая иконка "упала" -> запускаем полосу по всем
                 runShineOnAll();
             }, 460);
         };
 
-        // первый блик при открытии, чтобы не было пусто
+        // первый запуск эффекта
         runShineOnAll();
-        // имитация нового выигрыша каждые 4.5 сек
+        // далее — каждые 4.5 сек
         setInterval(shiftLiveOnce, 4500);
     }
 
-    // дальше: обработчики открытия кейсов, запросы к бэкенду и т.д.
+    // здесь позже добавим логику открытия кейсов и работу с бэкендом
 });
