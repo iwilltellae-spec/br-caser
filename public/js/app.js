@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Telegram user:', user);
     }
 
-    // ----- LIVE: сдвиг, рандомные иконки и полоса по всем при обновлении -----
+    // ----- LIVE: сдвиг, рандом и полоска по всем иконкам -----
 
     const liveTrack = document.querySelector('.live-track');
 
@@ -40,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 item.classList.add('shine');
             });
 
-            // убираем класс чуть позже, чтобы можно было перезапускать
             setTimeout(() => {
                 items.forEach(item => item.classList.remove('shine'));
             }, 1400);
@@ -75,16 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 isAnimating = false;
 
-                // новая иконка "упала" -> запускаем полосу по всем
+                // новый дроп -> полоса по всем иконкам
                 runShineOnAll();
             }, 460);
         };
 
-        // первый запуск эффекта
         runShineOnAll();
-        // далее — каждые 4.5 сек
         setInterval(shiftLiveOnce, 4500);
     }
 
-    // здесь позже добавим логику открытия кейсов и работу с бэкендом
+    // сюда позже добавим логику открытия кейсов и работу с сервером
 });

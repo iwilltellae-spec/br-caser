@@ -81,7 +81,7 @@ body {
 /* BC в балансе */
 
 .balance-row {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     font-weight: 800;
@@ -90,9 +90,9 @@ body {
 }
 
 .coin-img {
-    width: 16px;
-    height: 16px;
-    min-width: 16px;
+    width: 18px;        /* чуть больше круга */
+    height: 18px;
+    min-width: 18px;
     border-radius: 50%;
     background: #2563eb;
     display: flex;
@@ -101,16 +101,20 @@ body {
 }
 
 .coin-img span {
-    font-size: 7px;
+    font-size: 8px;     /* BC оставляем мелким */
     font-weight: 900;
     color: #ffffff;
     line-height: 1;
-    margin-top: -1px; /* лёгкий подъём, чтобы было визуально по центру */
     text-shadow: 0 0 2px #000;
 }
 
+#balance {
+    line-height: 1;
+    display: inline-block;
+}
+
 .btn-deposit {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     background: linear-gradient(90deg, #7c3aed, #a78bfa);
@@ -202,7 +206,7 @@ body {
     object-fit: cover;
 }
 
-/* Полоска на лайв-иконках — включается .shine */
+/* Полоска на лайв-иконках — по всем, когда добавляется новый дроп */
 
 .live-item::before {
     content: "";
@@ -280,14 +284,12 @@ body {
     position: relative;
 }
 
-/* Цветные рамки */
-
 .border-yellow { border-color: #facc15; }
 .border-green  { border-color: #22c55e; }
 .border-red    { border-color: #ef4444; }
 .border-blue   { border-color: #3b82f6; }
 
-/* Блик на втором кейсе — полоса через всю карточку */
+/* Блик на втором кейсе (полоса по всей карточке) */
 
 .shine-card {
     position: relative;
@@ -352,7 +354,6 @@ body {
 .case-footer-text {
     display: flex;
     align-items: center;
-    min-height: 14px;
 }
 
 .case-title {
@@ -361,7 +362,7 @@ body {
     line-height: 1;
 }
 
-/* Кнопки */
+/* Кнопки кейсов */
 
 .btn-case {
     border: none;
@@ -369,7 +370,7 @@ body {
     padding: 6px 14px;
     font-size: 11px;
     font-weight: 800;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 5px;
     color: #ffffff;
@@ -382,7 +383,7 @@ body {
     object-fit: contain;
 }
 
-/* FREE‑кнопки */
+/* FREE-кнопки с мягкой полосой */
 
 .btn-free {
     position: relative;
@@ -415,14 +416,12 @@ body {
     100% { transform: translateX(300%) rotate(20deg); opacity: 0; }
 }
 
-/* Цвет кнопок */
-
 .btn-yellow { background: #facc15; }
 .btn-green  { background: #22c55e; }
 .btn-red    { background: #ef4444; }
 .btn-blue   { background: #3b82f6; }
 
-/* BC в кнопках кейсов — как раньше, не менял, только немного подогнал под баланс */
+/* BC в кнопках кейсов (оставил как было по твоей просьбе) */
 
 .bc-circle {
     width: 13px;
@@ -443,7 +442,7 @@ body {
     font-weight: 800;
 }
 
-/* НИЖНЕЕ МЕНЮ */
+/* НИЖНЕЕ МЕНЮ — все иконки одинаковые, без фиолетового квадрата */
 
 .bottom-nav {
     position: fixed;
@@ -454,7 +453,7 @@ body {
     border-top: 1px solid #222;
     display: flex;
     justify-content: space-around;
-    padding: 6px 12px 8px 12px;
+    padding: 6px 10px 6px 10px;
     z-index: 100;
 }
 
@@ -473,32 +472,16 @@ body {
     height: 22px;
     object-fit: contain;
     filter: brightness(0) invert(1);
-    opacity: 0.65;
+    opacity: 0.6;
 }
 
-/* Центральная иконка дома — чуть больше, но не огромная */
+/* Активный пункт (Домой) */
 
-.active-home {
-    position: relative;
-}
-
-.home-bg {
-    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-    width: 32px;
-    height: 32px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 2px solid #000000;
-}
-
-.home-bg img {
-    width: 18px;
-    height: 18px;
-    opacity: 1;
-}
-
-.active-home span {
+.nav-active span {
     color: #ffffff;
+}
+
+.nav-active img {
+    opacity: 1;
+    filter: brightness(1.2) invert(1) drop-shadow(0 0 4px rgba(139,92,246,0.9));
 }
