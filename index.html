@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Black Russia Cases</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Telegram WebApp SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <!-- Шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="public/css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="header-left">
+        <div class="avatar-wrap">
+            <div class="avatar" id="userAvatar"></div>
+            <div class="settings-gear">⚙️</div>
+        </div>
+        <div class="user-data">
+            <span class="label">Ваш баланс</span>
+            <div class="balance-row">
+                <div class="coin-img"><span>BC</span></div>
+                <span id="balance">15.000</span>
+            </div>
+        </div>
+    </div>
+    <button class="btn-deposit">
+        <img src="public/images/popo-item.png" class="btn-deposit-icon" alt="">
+        <span>Пополнить</span>
+    </button>
+</header>
+
+<main class="content">
+
+    <!-- LIVE -->
+    <section class="live-section">
+        <div class="live-tag">
+            <span class="live-dot"></span>
+            <span class="live-text">Live</span>
+        </div>
+
+        <!-- обёртка (не двигается) -->
+        <div class="live-scroll">
+            <!-- трек (двигается) -->
+            <div class="live-track">
+                <div class="live-item"><img src="public/images/live-1.png" alt=""></div>
+                <div class="live-item"><img src="public/images/live-2.png" alt=""></div>
+                <div class="live-item"><img src="public/images/live-3.png" alt=""></div>
+                <div class="live-item"><img src="public/images/live-4.png" alt=""></div>
+                <div class="live-item"><img src="public/images/live-5.png" alt=""></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БАННЕРЫ (фото без текста поверх) -->
+    <section class="promo-grid">
+
+        <!-- Кейс Мажор -->
+        <div class="banner-img">
+            <img src="public/images/banner-major.png" alt="Кейс Мажор">
+        </div>
+
+        <!-- Дуэли -->
+        <div class="banner-img">
+            <img src="public/images/banner-duel.png" alt="Дуэли">
+        </div>
+
+        <!-- Контракты / Улучшение -->
+        <div class="banner-bottom-row">
+            <div class="banner-img small">
+                <img src="public/images/banner-contracts.png" alt="Контракты">
+            </div>
+            <div class="banner-img small">
+                <img src="public/images/banner-upgrade.png" alt="Улучшение">
+            </div>
+        </div>
+    </section>
+
+    <!-- КЕЙСЫ -->
+    <section class="cases-area">
+
+        <!-- 1. FREE24 -->
+        <article class="case-card case-free border-yellow">
+            <div class="case-img">
+                <img src="public/images/case-free24.png" alt="Free 24h">
+            </div>
+            <div class="case-footer case-footer-free">
+                <div class="case-footer-text">
+                    <span class="case-title">Free 24h</span>
+                </div>
+                <button class="btn-case btn-yellow btn-free">
+                    <img src="public/images/case-free24-icon.png" class="btn-icon" alt="">
+                    <span>FREE</span>
+                </button>
+            </div>
+        </article>
+
+        <!-- 2. FREE (с анимацией блика на карточке) -->
+        <article class="case-card case-free border-green shine-card">
+            <div class="case-img">
+                <img src="public/images/case-free.png" alt="Free">
+            </div>
+            <div class="case-footer case-footer-free">
+                <div class="case-footer-text">
+                    <span class="case-title">Free</span>
+                </div>
+                <button class="btn-case btn-green btn-free">
+                    <img src="public/images/case-free-icon.png" class="btn-icon" alt="">
+                    <span>FREE</span>
+                </button>
+            </div>
+        </article>
+
+        <!-- 3. Farm -->
+        <article class="case-card case-paid border-red">
+            <div class="case-img">
+                <img src="public/images/case-farm.png" alt="Farm">
+            </div>
+            <div class="case-footer">
+                <div class="case-footer-text">
+                    <span class="case-title">Farm</span>
+                </div>
+                <button class="btn-case btn-red">
+                    <img src="public/images/case-farm-icon.png" class="btn-icon" alt="">
+                    <span class="price-num">0.1</span>
+                    <span class="bc-circle">BC</span>
+                </button>
+            </div>
+        </article>
+
+        <!-- 4. Winter -->
+        <article class="case-card case-paid border-blue">
+            <div class="case-img">
+                <img src="public/images/case-winter.png" alt="Winter">
+            </div>
+            <div class="case-footer">
+                <div class="case-footer-text">
+                    <span class="case-title">Winter</span>
+                </div>
+                <button class="btn-case btn-blue">
+                    <img src="public/images/case-winter-icon.png" class="btn-icon" alt="">
+                    <span class="price-num">3</span>
+                    <span class="bc-circle">BC</span>
+                </button>
+            </div>
+        </article>
+
+    </section>
+
+    <div style="height: 120px;"></div>
+</main>
+
+<!-- НИЖНЕЕ МЕНЮ -->
+<nav class="bottom-nav">
+    <div class="nav-item">
+        <img src="public/images/menu-inventory.png" alt="Inv">
+        <span>Инвентарь</span>
+    </div>
+    <div class="nav-item">
+        <img src="public/images/menu-ref.png" alt="Ref">
+        <span>Пригласить</span>
+    </div>
+    <div class="nav-item active-home">
+        <div class="home-bg">
+            <img src="public/images/menu-home.png" alt="Home">
+        </div>
+        <span>Главная</span>
+    </div>
+    <div class="nav-item">
+        <img src="public/images/menu-rating.png" alt="Top">
+        <span>Рейтинг</span>
+    </div>
+    <div class="nav-item">
+        <img src="public/images/menu-rewards.png" alt="Bonus">
+        <span>Награды</span>
+    </div>
+</nav>
+
+<script src="public/js/app.js"></script>
+</body>
+</html>
